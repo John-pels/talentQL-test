@@ -93,5 +93,6 @@ const border = {
 
 const boxShadow = {
   basic: '0 0 0 2px #f2f2f2',
+  hover: '0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);',
 }
 export { colors, media, fontSize, fontFamily, border, boxShadow }
