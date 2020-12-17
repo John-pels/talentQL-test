@@ -5,7 +5,6 @@ export const CardContainer = styled.div`
   justify-content: space-between;
   cursor: pointer;
   transition: 0.3s;
-
   ${({ theme }) => theme?.media?.md} {
     flex-flow: column;
   }
@@ -20,6 +19,7 @@ export const CardColumn = styled.div`
   box-shadow: ${({ theme }) => theme?.boxShadow?.basic};
   border-radius: 15px;
   padding: 15px 25px;
+  background: ${({ theme }) => theme?.colors?.default};
 
   &:hover {
     box-shadow: ${({ theme }) => theme?.boxShadow?.hover};
