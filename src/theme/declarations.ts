@@ -4,8 +4,10 @@
 
 const colors = {
   primary: '#FCCC34',
-  secondary: '',
+  secondary: '#000000',
   default: '#FFF',
+  linkBg: '#1d1d1d',
+  linkHover: '#4C4C4C',
 }
 
 /**
@@ -85,4 +87,11 @@ const fontFamily = {
    */
 }
 
-export { colors, media, fontSize, fontFamily }
+const border = {
+  bottom: '1px solid  #707070',
+}
+
+const boxShadow = {
+  basic: '0 0 0 2px #f2f2f2',
+}
+export { colors, media, fontSize, fontFamily, border, boxShadow }
