@@ -10,7 +10,7 @@ const SEO = ({ title }: SEOProps) => {
   const theme = useTheme()
   return (
     <Head>
-      <title>{title} | F&K Savings</title>
+      <title>{title} | MTN</title>
       <link rel="shortcut icon" href="/images/favicon.ico" />
       <meta name="robots" content="index,follow" />
       <meta name="og:type" content="website" />
