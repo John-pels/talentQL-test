@@ -3,7 +3,7 @@
  */
 
 const colors = {
-  primary: '',
+  primary: '#FCCC34',
   secondary: '',
   default: '#FFF',
 }
