@@ -4,6 +4,8 @@ import styled from 'styled-components'
 export const ExistingContainer = styled(MarginalContainer)`
   display: flex;
   flex-flow: column;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 `
 
 export const ExisitingHeading = styled.h1`
