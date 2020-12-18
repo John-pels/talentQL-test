@@ -4,6 +4,7 @@
 
 const colors = {
   primary: '#FCCC34',
+  hover: '#f0c63c',
   secondary: '#000000',
   default: '#FFF',
   linkBg: '#1d1d1d',
