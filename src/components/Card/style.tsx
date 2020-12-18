@@ -18,7 +18,7 @@ export const CardColumn = styled.div`
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1);
   box-shadow: ${({ theme }) => theme?.boxShadow?.basic};
   border-radius: 15px;
-  padding: 15px 25px;
+  padding: 18px 25px;
   background: ${({ theme }) => theme?.colors?.default};
 
   &:hover {
@@ -49,15 +49,15 @@ export const SubText = styled.span`
 
 export const IconWrapper = styled.div`
   display: flex;
-  width: 80px;
-  height: 80px;
+  width: 55px;
+  height: 55px;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   background: ${({ theme }) => theme?.colors?.primary};
 
   ${({ theme }) => theme?.media?.md} {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
   }
 `
