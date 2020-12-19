@@ -5,6 +5,7 @@ import styled from 'styled-components'
  */
 export const Small = styled.div`
   display: none;
+
   ${({ theme }) => theme?.media?.lg} {
     display: block;
   }
@@ -14,6 +15,7 @@ export const Small = styled.div`
  */
 export const Large = styled.div`
   display: block;
+
   ${({ theme }) => theme?.media?.lg} {
     display: none;
   }

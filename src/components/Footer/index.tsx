@@ -5,8 +5,6 @@ import {
   GridItem,
   GridItemHeading,
   Heading,
-  PlusIcon,
-  MinusIcon,
   SocialMediaWrapper,
   Paragraph,
   BottomWrapper,
@@ -17,6 +15,7 @@ import {
 import { FaTwitter, FaFacebookF, FaLinkedinIn, FaInstagram, FaYoutube } from 'react-icons/fa'
 import Dropdown from '@components/Dropdown'
 import { useState } from 'react'
+import { PlusIcon, MinusIcon } from '@components/misc'
 
 const Footer = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)

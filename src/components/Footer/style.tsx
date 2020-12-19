@@ -1,11 +1,10 @@
 import styled from 'styled-components'
-import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 
 export const FooterContainer = styled.footer`
   background: ${({ theme }) => theme?.colors?.secondary};
   min-height: 80vh;
   color: ${({ theme }) => theme?.colors?.default};
-  padding: 5rem 8rem;
+  padding: 5rem 8rem 13rem 8rem;
   ${({ theme }) => theme?.media?.md} {
     grid: auto auto / 1fr;
     width: 100%;
@@ -23,40 +22,6 @@ export const Grid = styled.section`
     width: 100%;
     gap: 0 30px;
   }
-
-  /* &:nth-child(1) {
-    grid-area: 1 / 1 / 2 / 2;
-  }
-
-  &:nth-child(2) {
-    grid-area: 1 / 2 / 2 / 3;
-  }
-
-  &:nth-child(3) {
-    grid-area: 1 / 3 / 2 / 4;
-  }
-
-  &:nth-child(4) {
-    grid-area: 1 / 4 / 2 / 5;
-  }
-
-  &:nth-child(5) {
-    grid-area: 1 / 5 / 2 / 6;
-  }
-
-  &:nth-child(6) {
-    grid-area: 2 / 1 / 3 / 2;
-  }
-  &:nth-of-type(7) {
-    grid-area: 2 / 2 / 3 / 3;
-    border: 2px solid green;
-  }
-  &:nth-of-type(8) {
-    grid-area: 2 / 3 / 3 / 4;
-  }
-  &:nth-of-type(9) {
-    grid-area: 1 / 6 / 2 / 7;
-  } */
 `
 export const GridItem = styled.div`
   ${({ theme }) => theme?.media?.md} {
@@ -77,23 +42,6 @@ export const Heading = styled.h2`
   transition: all 0.5s ease-in-out;
   color: ${({ theme }) => theme?.colors?.footerH2};
   font-size: ${({ theme }) => theme?.fontSize?.custom(18)};
-`
-export const PlusIcon = styled(AiOutlinePlus)`
-  display: none;
-  font-size: ${({ theme }) => theme?.fontSize?.custom(25)};
-
-  ${({ theme }) => theme?.media?.md} {
-    display: block;
-  }
-`
-
-export const MinusIcon = styled(AiOutlineMinus)`
-  display: none;
-  font-size: ${({ theme }) => theme?.fontSize?.custom(25)};
-
-  ${({ theme }) => theme?.media?.md} {
-    display: block;
-  }
 `
 
 export const BottomWrapper = styled.section`
@@ -118,7 +66,7 @@ export const SocialMediaWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   font-size: ${({ theme }) => theme?.fontSize?.custom(25)};
-  grid-gap: 20px;
+  grid-gap: 45px;
   margin: 2rem 0;
 
   ${({ theme }) => theme?.media?.md} {

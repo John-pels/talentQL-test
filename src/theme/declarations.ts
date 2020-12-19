@@ -12,6 +12,7 @@ const colors = {
   greyBg: '#f2f2f2',
   footerH2: ' #b7baba',
   footerP: '#484848',
+  navHead: '#6a6b6b',
 }
 
 /**
