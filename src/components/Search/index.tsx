@@ -1,8 +1,7 @@
-import CustomModal from '@components/Modal'
 import { API_KEY } from '@services/index'
 import { searchRequest } from '@services/request'
 import { FC, ChangeEvent, useState, FormEvent, Fragment } from 'react'
-import { SearchContainer, SearchInput, SearchIcon, InputGroup, Form, Title } from './style'
+import { SearchContainer, SearchInput, SearchIcon, InputGroup, Form } from './style'
 import { SearchTypes } from './types'
 
 const Search: FC<SearchTypes> = ({ setGiphy, setShowModal }) => {
