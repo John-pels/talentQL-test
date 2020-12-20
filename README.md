@@ -7,4 +7,4 @@
 - NextJs
   -styled-components
 - Axois
-  -TypeScript
+- TypeScript
