@@ -43,3 +43,9 @@ export const SearchIcon = styled(AiOutlineSearch)`
   top: 10px;
   font-size: ${({ theme }) => theme?.fontSize.custom(20)};
 `
+
+export const Title = styled.p`
+  text-align: center;
+  font-size: ${({ theme }) => theme?.fontSize?.custom(18)};
+  color: #000;
+`
