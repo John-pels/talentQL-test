@@ -14,13 +14,17 @@ const Search: FC<SearchTypes> = ({ setGiphy, setShowModal }) => {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
-    try {
-      const data: any = await searchRequest(API_KEY, keyword)
-      setGiphy(data)
-      setShowModal(true)
-    } catch (error) {
-      console.log(error)
-    } finally {
+    if (keyword.trim() !== '') {
+      try {
+        const data: any = await searchRequest(API_KEY, keyword)
+        setGiphy(data)
+        setShowModal(true)
+      } catch (error) {
+        console.log(error)
+      } finally {
+      }
+    } else {
+      return alert('Enter a keyword')
     }
   }
   return (

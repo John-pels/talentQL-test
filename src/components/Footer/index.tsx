@@ -16,7 +16,7 @@ import { FaTwitter, FaFacebookF, FaLinkedinIn, FaInstagram, FaYoutube } from 're
 import Dropdown from '@components/Dropdown'
 import { useState } from 'react'
 import { PlusIcon, MinusIcon } from '@components/misc'
-
+import { data } from './data'
 const Footer = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [selected, setSelected] = useState<number>(-1)
@@ -27,55 +27,6 @@ const Footer = () => {
     setSelected(index)
   }
 
-  const data = [
-    {
-      heading: 'Personal',
-
-      listItem: ['Services', 'Data', 'Devices', 'Getting Started', 'myMTN App'],
-      list: true,
-    },
-    {
-      heading: 'Business',
-      toggle: '',
-      list: false,
-    },
-
-    {
-      heading: 'Investors',
-
-      listItem: ['More in Investors', 'Shareholders', 'Financial Reporting', 'Announcements'],
-      list: true,
-    },
-    {
-      heading: 'Foundation',
-
-      list: false,
-    },
-    {
-      heading: 'Events',
-      list: false,
-    },
-    {
-      heading: 'Support',
-      listItem: ['Help Center', 'Community'],
-      list: true,
-    },
-    {
-      heading: 'About Us',
-      list: false,
-    },
-    {
-      heading: 'Career',
-      toggle: '',
-      list: false,
-    },
-    {
-      heading: 'Contact Us',
-
-      listItem: ['MTN Supplier'],
-      list: true,
-    },
-  ]
   return (
     <FooterContainer>
       <Grid>

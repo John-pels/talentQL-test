@@ -11,9 +11,12 @@ import {
   NavbarFlexItemHead,
   NavbarItemHeading,
   AngleDownIcon,
+  AngleRightIcon,
   Menu,
   List,
   ListItem,
+  ListItemHead,
+  SubMenu,
 } from './style'
 import Link from 'next/link'
 import images from '@assets/images'
@@ -21,11 +24,13 @@ import Search from '@components/Search'
 import { PlusIcon, MinusIcon } from '@components/misc'
 import CustomModal from '@components/Modal'
 import { Title } from '@components/Search/style'
+import { Links } from './data'
 
 const { MtnLogo } = images
 const Navbar = () => {
   const [isOpen, _setIsOpen] = useState<boolean>(false)
   const [showDropdown, setShowDropdown] = useState<boolean>(false)
+  const [selected, setSelected] = useState<number>(-1)
   const [giphy, setGiphy] = useState<Array<any>>([])
   const [showModal, setShowModal] = useState<boolean>(false)
   const handleToggle = () => {
@@ -33,9 +38,11 @@ const Navbar = () => {
     _setIsOpen(newState)
   }
 
-  const toggleDropdown = () => {
+  const toggleDropdown = (index: number) => {
     setShowDropdown(!showDropdown)
+    setSelected(index)
   }
+
   return (
     <Fragment>
       <NavbarContainer>
@@ -58,89 +65,39 @@ const Navbar = () => {
         </NavbarLabel>
         <NavbarFlex isOpen={isOpen}>
           <NavbarFlexGrow>
-            <NavbarFlexItem isMenu>
-              <NavbarFlexItemHead>
-                <NavbarItemHeading>Personal</NavbarItemHeading>
-                <AngleDownIcon />
-                {isOpen &&
-                  (!showDropdown ? (
-                    <PlusIcon onClick={toggleDropdown} />
-                  ) : (
-                    <MinusIcon onClick={toggleDropdown} />
-                  ))}
-              </NavbarFlexItemHead>
+            {Links.map((link, index) => {
+              const { isMenu, lists, heading, listItem } = link
+              const _open = isOpen && lists
+              const _check = isOpen && selected === index
+              return (
+                <NavbarFlexItem isMenu={isMenu} key={index}>
+                  <NavbarFlexItemHead>
+                    <NavbarItemHeading>{heading}</NavbarItemHeading>
+                    {lists && <AngleDownIcon />}
+                    {_open &&
+                      (showDropdown && _check ? (
+                        <MinusIcon onClick={() => toggleDropdown(index)} />
+                      ) : (
+                        <PlusIcon onClick={() => toggleDropdown(index)} />
+                      ))}
+                  </NavbarFlexItemHead>
 
-              <Menu className="menu-list" showDropdown={showDropdown}>
-                <List>
-                  <ListItem>Hey!</ListItem>
-                  <ListItem>You!</ListItem>
-                </List>
-              </Menu>
-            </NavbarFlexItem>
-            <NavbarFlexItem>
-              <NavbarFlexItemHead>
-                <NavbarItemHeading>Business</NavbarItemHeading>
-              </NavbarFlexItemHead>
-            </NavbarFlexItem>
-            <NavbarFlexItem>
-              <NavbarFlexItemHead>
-                <NavbarItemHeading>Investors</NavbarItemHeading>
-                <AngleDownIcon />
-                {isOpen &&
-                  (!showDropdown ? (
-                    <PlusIcon onClick={toggleDropdown} />
-                  ) : (
-                    <MinusIcon onClick={toggleDropdown} />
-                  ))}
-              </NavbarFlexItemHead>
-            </NavbarFlexItem>
-            <NavbarFlexItem>
-              <NavbarFlexItemHead>
-                <NavbarItemHeading>Foundation</NavbarItemHeading>
-              </NavbarFlexItemHead>
-            </NavbarFlexItem>
-            <NavbarFlexItem>
-              <NavbarFlexItemHead>
-                <NavbarItemHeading>Events</NavbarItemHeading>
-              </NavbarFlexItemHead>
-            </NavbarFlexItem>
-
-            <NavbarFlexItem>
-              <NavbarFlexItemHead>
-                <NavbarItemHeading>Support</NavbarItemHeading>
-                <AngleDownIcon />
-                {isOpen &&
-                  (!showDropdown ? (
-                    <PlusIcon onClick={toggleDropdown} />
-                  ) : (
-                    <MinusIcon onClick={toggleDropdown} />
-                  ))}
-              </NavbarFlexItemHead>
-            </NavbarFlexItem>
-
-            <NavbarFlexItem>
-              <NavbarFlexItemHead>
-                <NavbarItemHeading>About Us</NavbarItemHeading>
-              </NavbarFlexItemHead>
-            </NavbarFlexItem>
-            <NavbarFlexItem>
-              <NavbarFlexItemHead>
-                <NavbarItemHeading>Careers</NavbarItemHeading>
-              </NavbarFlexItemHead>
-            </NavbarFlexItem>
-
-            <NavbarFlexItem>
-              <NavbarFlexItemHead>
-                <NavbarItemHeading>Contact Us</NavbarItemHeading>
-                <AngleDownIcon />
-                {isOpen &&
-                  (!showDropdown ? (
-                    <PlusIcon onClick={toggleDropdown} />
-                  ) : (
-                    <MinusIcon onClick={toggleDropdown} />
-                  ))}
-              </NavbarFlexItemHead>
-            </NavbarFlexItem>
+                  {lists && (
+                    <Menu className="menu-list" showDropdown={_check && showDropdown}>
+                      <List>
+                        {listItem.map((list, index) => (
+                          <ListItem key={index}>
+                            <ListItemHead>
+                              <span>{list.link}</span> {list.icon && <AngleRightIcon />}
+                            </ListItemHead>
+                          </ListItem>
+                        ))}
+                      </List>
+                    </Menu>
+                  )}
+                </NavbarFlexItem>
+              )
+            })}
           </NavbarFlexGrow>
           <Search setGiphy={setGiphy} setShowModal={setShowModal} />
         </NavbarFlex>

@@ -1,11 +1,12 @@
 import styled from 'styled-components'
-import { FaAngleDown } from 'react-icons/fa'
+import { FaAngleDown, FaAngleRight } from 'react-icons/fa'
 import { GridAnimation } from './animation'
 
 export const NavbarContainer = styled.section`
   display: flex;
   background: ${({ theme }) => theme?.colors?.primary};
   padding: 1rem;
+
   ${({ theme }) => theme?.media?.lg} {
     flex-direction: column;
   }
@@ -91,8 +92,7 @@ export const NavbarFlex = styled.div<{ isOpen: boolean }>`
     align-items: flex-start;
     justify-content: flex-start;
     width: 100%;
-    max-height: max-content;
-    margin: ${({ isOpen }) => (isOpen ? '1rem 0 10rem 0' : 0)};
+    margin: ${({ isOpen }) => (isOpen ? '1rem 0 13rem 0' : 0)};
     transition: all 0.5s ease-in-out;
     overflow: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
     opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
@@ -118,11 +118,12 @@ export const NavbarFlexGrow = styled.div`
     width: 100%;
   }
 `
-export const NavbarFlexItem = styled.div<{ isMenu?: boolean }>`
+export const NavbarFlexItem = styled.div<{ isMenu?: boolean; isSubMenu?: boolean }>`
   display: flex;
   position: relative;
   ${({ theme }) => theme?.media?.lg} {
     width: 100%;
+    flex-flow: column;
   }
 
   &:hover {
@@ -161,6 +162,14 @@ export const AngleDownIcon = styled(FaAngleDown)`
   }
 `
 
+export const AngleRightIcon = styled(FaAngleRight)`
+  margin-left: 0.3rem;
+
+  ${({ theme }) => theme?.media?.lg} {
+    display: none;
+  }
+`
+
 export const Menu = styled.div<{ showDropdown?: boolean }>`
   display: none;
   flex-flow: column;
@@ -172,22 +181,41 @@ export const Menu = styled.div<{ showDropdown?: boolean }>`
   top: 120%;
   background: ${({ theme }) => theme?.colors?.linkBg};
   z-index: 10;
-  min-width: 300px;
+  min-width: 250px;
   transition: 0.1s;
-  border-radius: 20px;
+  border-radius: 15px;
+  transition: all 0.5s ease-in-out;
 
   ${({ theme }) => theme?.media?.lg} {
     width: 100%;
     display: flex;
+    flex-flow: column;
     animation: none;
     overflow: ${({ showDropdown }) => (showDropdown ? 'visible' : 'hidden')};
     opacity: ${({ showDropdown }) => (showDropdown ? 1 : 0)};
     max-height: ${({ showDropdown }) => (showDropdown ? '50vh' : 0)};
     background: ${({ theme }) => theme?.colors?.linkHover};
     border-radius: 0;
-    /* z-index: unset; */
-    /* position: unset; */
+    z-index: unset;
+    position: unset;
+    min-width: 0;
+    top: unset;
   }
+`
+
+export const SubMenu = styled(Menu)`
+  left: 30%;
+  /* position: absolute; */
+  border: 2px solid white;
+  /* z-index: 999; */
+  max-height: 0;
+  overflow-y: hidden;
+  position: absolute;
+  top: 120%;
+  left: -200px;
+  right: 0;
+  background-color: #fff;
+  z-index: 10;
 `
 
 export const List = styled.ul`
@@ -198,13 +226,32 @@ export const List = styled.ul`
   margin-inline-end: 0px;
   padding-inline-start: 0px;
   transition: all 0.5s ease-in-out;
+  position: relative;
 `
-export const ListItem = styled.li`
+export const ListItem = styled.li<{ isSubMenu?: boolean }>`
   line-height: 30px;
   border-bottom: 1px solid #707070;
-  padding: 0.5rem 0 0.5rem 1.5rem;
+  padding: 0.5rem 1rem 0.5rem 1.5rem;
   cursor: pointer;
-  ${({ theme }) => theme?.media?.md} {
-    /* padding: 0.5rem 2rem; */
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-flow: column;
+  overflow-x: hidden;
+
+  &:hover {
+    .sub-menu-list {
+      display: ${({ isSubMenu }) => isSubMenu && 'flex'};
+    }
+
+    background: ${({ theme }) => theme?.colors?.linkHover};
   }
+
+  ${({ theme }) => theme?.media?.md} {
+  }
+`
+
+export const ListItemHead = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
