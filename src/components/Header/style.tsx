@@ -26,9 +26,8 @@ export const HeaderContainer = styled.header`
     pointer-events: none;
   }
 
-  /* ${({ theme }) => theme?.media?.md} {
-    background-position: 50%;
-  } */
+  ${({ theme }) => theme?.media?.md} {
+  }
 `
 
 export const TextWrapper = styled.div`
