@@ -10,7 +10,7 @@ export const searchRequest = async (apiKey: string, keyword: string) => {
 }
 
 export const getStates = async () => {
-  const response = await axios.get('http://locationsng-api.herokuapp.com/api/v1/states')
+  const response = await axios.get('https://locationsng-api.herokuapp.com/api/v1/states')
   const returnedData = response.data
   return returnedData
 }
