@@ -101,7 +101,7 @@ const Navbar = () => {
                             <ListItem
                               key={index}
                               onMouseMoveCapture={() => onHover(_index, list.subMenu)}
-                              onMouseOver={() => onHover(-1, [])}
+                              onBlur={() => onHover(-1, [])}
                             >
                               <ListItemHead>
                                 <span>{list.link}</span> {list.icon && <AngleRightIcon />}
