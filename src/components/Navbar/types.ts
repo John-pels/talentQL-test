@@ -8,4 +8,5 @@ export interface LinkTypes {
 type ListItemTypes = {
   link: string
   icon?: boolean
+  subMenu?: Array<string>
 }

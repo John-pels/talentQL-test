@@ -38,7 +38,7 @@ export const TextWrapper = styled.div`
 export const HeroText = styled.h1`
   font-size: ${({ theme }) => theme?.fontSize?.custom(72)};
   line-height: 10px;
-  font-weight: 500;
+  font-weight: bold;
   z-index: 1;
   ${({ theme }) => theme?.media?.md} {
     font-size: ${({ theme }) => theme?.fontSize?.custom(35)};
@@ -76,5 +76,22 @@ export const Button = styled.button`
 
   &:hover {
     background: ${({ theme }) => theme?.colors?.hover};
+  }
+`
+
+export const SvgWrapper = styled.div`
+  overflow: hidden;
+  vertical-align: middle;
+  box-sizing: border-box;
+  fill: #fff;
+  color: #fff;
+
+  :not(svg) {
+    transform-origin: 0px 0px;
+  }
+
+  img {
+    width: 100%;
+    z-index: 3;
   }
 `

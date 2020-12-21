@@ -86,7 +86,9 @@ const fontSize = {
 const fontFamily = {
   /**
    * normal font family
+   
    */
+  normal: 'MTNBrightSans, sans-serif',
   /**
    * font family for headers
    */

@@ -10,7 +10,7 @@ export const ExistingContainer = styled(MarginalContainer)`
 
 export const ExisitingHeading = styled.h1`
   line-height: 1;
-  font-weight: 500;
+  font-weight: 600;
   font-size: ${({ theme }) => theme?.fontSize?.custom(24)};
 
   ${({ theme }) => theme?.media?.md} {

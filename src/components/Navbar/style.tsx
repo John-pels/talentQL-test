@@ -6,6 +6,7 @@ export const NavbarContainer = styled.section`
   display: flex;
   background: ${({ theme }) => theme?.colors?.primary};
   padding: 1rem;
+  font-weight: bold;
 
   ${({ theme }) => theme?.media?.lg} {
     flex-direction: column;
@@ -131,10 +132,18 @@ export const NavbarFlexItem = styled.div<{ isMenu?: boolean; isSubMenu?: boolean
       display: ${({ isMenu }) => isMenu && 'flex'};
     }
 
+    .sub-menu {
+      display: ${({ isSubMenu }) => isSubMenu && 'flex'};
+    }
+
     ${({ theme }) => theme?.media?.lg} {
       transition: 1.5s;
       position: unset;
       min-width: unset;
+
+      .sub-menu {
+        display: none;
+      }
     }
   }
 `
@@ -170,9 +179,10 @@ export const AngleRightIcon = styled(FaAngleRight)`
   }
 `
 
-export const Menu = styled.div<{ showDropdown?: boolean }>`
+export const Menu = styled.div<{ showDropdown?: boolean; isSubMenu?: boolean }>`
   display: none;
   flex-flow: column;
+  font-weight: 500;
   transition: 0.3s;
   animation: ${GridAnimation} 1s 1 cubic-bezier(0, 1, 0.5, 1);
   color: ${({ theme }) => theme?.colors?.default};
@@ -203,19 +213,26 @@ export const Menu = styled.div<{ showDropdown?: boolean }>`
   }
 `
 
-export const SubMenu = styled(Menu)`
-  left: 30%;
-  /* position: absolute; */
-  border: 2px solid white;
-  /* z-index: 999; */
-  max-height: 0;
+export const SubMenu = styled.div<{ expand?: boolean }>`
+  display: none;
+  flex-flow: column;
+  animation: ${GridAnimation} 1s 1 cubic-bezier(0, 1, 0.5, 1);
+  color: ${({ theme }) => theme?.colors?.default};
+
   overflow-y: hidden;
   position: absolute;
-  top: 120%;
-  left: -200px;
-  right: 0;
-  background-color: #fff;
+  margin-top: 1.5rem;
+
+  right: -360px;
+  background: ${({ theme }) => theme?.colors?.linkBg};
   z-index: 10;
+  min-width: 200px;
+  border-radius: 15px;
+  transition: all 0.5s ease-in-out;
+
+  ${({ theme }) => theme?.media?.lg} {
+    display: none;
+  }
 `
 
 export const List = styled.ul`
@@ -228,7 +245,7 @@ export const List = styled.ul`
   transition: all 0.5s ease-in-out;
   position: relative;
 `
-export const ListItem = styled.li<{ isSubMenu?: boolean }>`
+export const ListItem = styled.li`
   line-height: 30px;
   border-bottom: 1px solid #707070;
   padding: 0.5rem 1rem 0.5rem 1.5rem;
@@ -239,11 +256,10 @@ export const ListItem = styled.li<{ isSubMenu?: boolean }>`
   overflow-x: hidden;
 
   &:hover {
-    .sub-menu-list {
-      display: ${({ isSubMenu }) => isSubMenu && 'flex'};
-    }
-
     background: ${({ theme }) => theme?.colors?.linkHover};
+    .sub-menu {
+      display: flex;
+    }
   }
 
   ${({ theme }) => theme?.media?.md} {

@@ -30,6 +30,7 @@ const { MtnLogo } = images
 const Navbar = () => {
   const [isOpen, _setIsOpen] = useState<boolean>(false)
   const [showDropdown, setShowDropdown] = useState<boolean>(false)
+  const [menu, setMenu] = useState<Array<string>>([])
   const [selected, setSelected] = useState<number>(-1)
   const [giphy, setGiphy] = useState<Array<any>>([])
   const [showModal, setShowModal] = useState<boolean>(false)
@@ -41,6 +42,10 @@ const Navbar = () => {
   const toggleDropdown = (index: number) => {
     setShowDropdown(!showDropdown)
     setSelected(index)
+  }
+  const onHover = (index: number, menu) => {
+    setSelected(index)
+    setMenu(menu)
   }
 
   return (
@@ -69,8 +74,10 @@ const Navbar = () => {
               const { isMenu, lists, heading, listItem } = link
               const _open = isOpen && lists
               const _check = isOpen && selected === index
+              const _index = index
+
               return (
-                <NavbarFlexItem isMenu={isMenu} key={index}>
+                <NavbarFlexItem isMenu={isMenu} key={index} isSubMenu={selected === index}>
                   <NavbarFlexItemHead>
                     <NavbarItemHeading>{heading}</NavbarItemHeading>
                     {lists && <AngleDownIcon />}
@@ -83,17 +90,31 @@ const Navbar = () => {
                   </NavbarFlexItemHead>
 
                   {lists && (
-                    <Menu className="menu-list" showDropdown={_check && showDropdown}>
-                      <List>
-                        {listItem.map((list, index) => (
-                          <ListItem key={index}>
-                            <ListItemHead>
-                              <span>{list.link}</span> {list.icon && <AngleRightIcon />}
-                            </ListItemHead>
-                          </ListItem>
-                        ))}
-                      </List>
-                    </Menu>
+                    <>
+                      <Menu
+                        className="menu-list"
+                        showDropdown={_check && showDropdown}
+                        isSubMenu={selected === index}
+                      >
+                        <List>
+                          {listItem.map((list, index) => (
+                            <ListItem
+                              key={index}
+                              onMouseMoveCapture={() => onHover(_index, list.subMenu)}
+                            >
+                              <ListItemHead>
+                                <span>{list.link}</span> {list.icon && <AngleRightIcon />}
+                              </ListItemHead>
+                            </ListItem>
+                          ))}
+                        </List>
+                      </Menu>
+                      <SubMenu className="sub-menu">
+                        {Array.isArray(menu) && menu.length > 0
+                          ? menu.map((sub, index) => <ListItem key={index}>{sub}</ListItem>)
+                          : null}
+                      </SubMenu>
+                    </>
                   )}
                 </NavbarFlexItem>
               )

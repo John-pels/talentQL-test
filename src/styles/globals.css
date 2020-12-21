@@ -1,9 +1,20 @@
+@font-face {
+  font-family: MTNBrightSans;
+  src: url('../assets/fonts/MTNBrighterSans-Regular.woff');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: MTNBrightSans;
+  src: url('../assets/fonts/MTNBrighterSans-Medium.woff');
+  font-weight: 300;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: MTNBrightSans, 'sans-serif';
 }
 
 a {
