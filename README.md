@@ -5,6 +5,6 @@
 - Giphy API
 - States API
 - NextJs
-  -styled-components
+- styled-components
 - Axois
 - TypeScript
