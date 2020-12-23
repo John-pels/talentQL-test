@@ -30,9 +30,9 @@ const Search: FC<SearchTypes> = ({ setGiphy, setShowModal }) => {
   return (
     <Fragment>
       <SearchContainer>
-        <Form role="search" onSubmit={handleSubmit}>
+        <Form role="search" onSubmit={handleSubmit} name="form">
           <InputGroup>
-            <SearchInput placeholder="Search..." onChange={handlechange} />
+            <SearchInput placeholder="Search..." onChange={handlechange} name="keyword" />
             <SearchIcon />
           </InputGroup>
         </Form>

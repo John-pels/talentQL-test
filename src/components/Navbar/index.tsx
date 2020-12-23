@@ -1,5 +1,7 @@
-import { Small, Large } from '@components/responsive'
+import { Small, Large, Logo } from '@components/responsive'
 import { Fragment, useState } from 'react'
+import Image from 'next/image'
+
 import {
   NavbarContainer,
   NavbarLabel,
@@ -54,8 +56,7 @@ const Navbar = () => {
         <NavbarLabel isOpen={isOpen}>
           <Link href="/">
             <a>
-              <Large as="img" src={MtnLogo} />
-              <Small as="img" src={MtnLogo} />
+              <Logo src={MtnLogo} alt="Brand Logo" />
             </a>
           </Link>
           <Small>
@@ -100,8 +101,12 @@ const Navbar = () => {
                           {listItem.map((list, index) => (
                             <ListItem
                               key={index}
-                              onMouseMoveCapture={() => onHover(_index, list.subMenu)}
-                              onBlur={() => onHover(-1, [])}
+                              onMouseMoveCapture={() => {
+                                onHover(_index, list.subMenu)
+                              }}
+                              onBlur={() => {
+                                onHover(-1, [])
+                              }}
                             >
                               <ListItemHead>
                                 <span>{list.link}</span> {list.icon && <AngleRightIcon />}

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { FaAngleDown, FaAngleRight } from 'react-icons/fa'
 import { GridAnimation } from './animation'
 
-export const NavbarContainer = styled.section`
+export const NavbarContainer = styled.nav`
   display: flex;
   background: ${({ theme }) => theme?.colors?.primary};
   padding: 1rem;

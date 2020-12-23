@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import Image from 'next/image'
 /**
  * This hides the element on desktop and displays it on smaller screens
  */
@@ -27,3 +27,5 @@ export const XLarge = styled.div`
     display: none;
   }
 `
+
+export const Logo = styled('img')``

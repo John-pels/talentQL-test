@@ -6,11 +6,11 @@ const Dropdown = () => {
   const callBack = useCallback(async () => {
     const data = await getStates()
     setState(data)
-  }, [])
+  }, [setState])
 
   useEffect(() => {
     callBack()
-  }, [])
+  }, [callBack])
 
   return (
     <SelectContainer>
