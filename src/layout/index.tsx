@@ -10,15 +10,16 @@ const Container = styled.main`
 interface LayoutProps {
   children: React.ReactNode
   title: string
+  data?: Array<any>
 }
 
-const Layout: FC<LayoutProps> = ({ children, title }) => {
+const Layout: FC<LayoutProps> = ({ children, title, data }) => {
   return (
     <Container>
       <SEO title={title} />
       <Navbar />
       {children}
-      <Footer />
+      <Footer data={data} />
     </Container>
   )
 }

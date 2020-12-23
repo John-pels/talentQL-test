@@ -22,6 +22,7 @@ const Search: FC<SearchTypes> = ({ setGiphy, setShowModal }) => {
       } catch (error) {
         console.log(error)
       } finally {
+        setKeyword('')
       }
     } else {
       return alert('Enter a keyword')
@@ -30,9 +31,19 @@ const Search: FC<SearchTypes> = ({ setGiphy, setShowModal }) => {
   return (
     <Fragment>
       <SearchContainer>
-        <Form role="search" onSubmit={handleSubmit} name="form">
+        <Form role="search" onSubmit={handleSubmit} name="form" id="searchbutton">
           <InputGroup>
-            <SearchInput placeholder="Search..." onChange={handlechange} name="keyword" />
+            <SearchInput
+              placeholder="Search..."
+              onChange={handlechange}
+              value={keyword}
+              name="keyword"
+              aria-required="true"
+              id="keyword"
+              title="Search"
+              aria-labelledby="searchbutton"
+              type="text"
+            />
             <SearchIcon />
           </InputGroup>
         </Form>

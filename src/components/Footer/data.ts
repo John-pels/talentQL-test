@@ -1,6 +1,6 @@
 import { DataTypes } from './types'
 
-export const data: Array<DataTypes> = [
+export const FooterLinks: Array<DataTypes> = [
   {
     heading: 'Personal',
 

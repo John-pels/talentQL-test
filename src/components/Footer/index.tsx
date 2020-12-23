@@ -16,8 +16,8 @@ import { FaTwitter, FaFacebookF, FaLinkedinIn, FaInstagram, FaYoutube } from 're
 import Dropdown from '@components/Dropdown'
 import { useState } from 'react'
 import { PlusIcon, MinusIcon } from '@components/misc'
-import { data } from './data'
-const Footer = () => {
+import { FooterLinks } from './data'
+const Footer = ({ data }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [selected, setSelected] = useState<number>(-1)
   const year = new Date().getFullYear()
@@ -30,7 +30,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       <Grid>
-        {data.map((grid, index) => {
+        {FooterLinks.map((grid, index) => {
           const { heading, listItem, list } = grid
           return (
             <GridItem key={index}>
@@ -67,7 +67,7 @@ const Footer = () => {
           <Paragraph>Privacy Policy & Data Protection</Paragraph>
         </Wrap>
         <Wrap>
-          <Dropdown />
+          <Dropdown data={data} />
         </Wrap>
       </BottomWrapper>
     </FooterContainer>
