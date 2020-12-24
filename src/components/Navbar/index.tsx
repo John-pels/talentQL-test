@@ -97,9 +97,10 @@ const Navbar = () => {
                         showDropdown={_check && showDropdown}
                         isSubMenu={selected === index}
                       >
-                        <List>
+                        <List role="list">
                           {listItem.map((list, index) => (
                             <ListItem
+                              role="listitem"
                               key={index}
                               onMouseMoveCapture={() => {
                                 onHover(_index, list.subMenu)
